@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Recherche de Musique
+  body
+    h1 Recherche de Musique
+    form(action="/search", method="get")
+      label(for="searchQuery") Rechercher une musique :
+      input(type="text", name="searchQuery", id="searchQuery", placeholder="Entrez le titre de la musique")
+      button(type="submit") Rechercher

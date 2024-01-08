@@ -1,0 +1,19 @@
+{
+  "name": "deezerapi",
+  "version": "1.0.0",
+  "description": "Api de music Deezer",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cisco29",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  }
+}
