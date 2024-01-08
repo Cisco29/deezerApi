@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Api de music Deezer",
   "main": "index.js",
+  "pre-commit": {
+    "run": ["test"]
+  },
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --exit"
   },
   "author": "Cisco29",
   "license": "ISC",
@@ -15,5 +18,9 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "pre-commit": "^1.2.2"
   }
 }
