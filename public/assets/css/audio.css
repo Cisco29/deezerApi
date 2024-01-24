@@ -83,3 +83,8 @@ ul { list-style: none; }
     margin-left:10px;
     margin-top: 20px;
 }
+
+#listMusic a {
+    color: #ddd; /* ou la couleur que vous préférez */
+    text-decoration: none; /* supprime le soulignement des liens */
+}

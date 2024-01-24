@@ -1,7 +1,7 @@
 extends ../layout.pug
-//- block 
-//- stylesheet 
-    //- link(href="/css/audio.css" rel="stylesheet")
+
+block stylesheet 
+    link(href="/css/audio.css" rel="stylesheet")
 
 block content 
     .container
@@ -12,36 +12,45 @@ block content
                         span.input-group-text 
                             i.fa.fa-search
                         input(type="search" id="keyword" name="keyword" value=keyword) 
-                        button(type="submit") Chercher 
+                        button.btn.btn-primary(type="submit") Chercher 
 
             .col.col-12.col-lg-6.mt-4
                 input(type="hidden" id="artist_song" value="")
                 input(type="hidden" id="title_song" value="")
 
                 if musics
-                    <div id="amazingaudioplayer">
-                        <div class="amazingaudioplayer-image">
-                            <img id="cover" src="" style="width:100%;max-width:100%;vertical-align:middle;">
-                        </div>
-                        <div class="amazingaudioplayer-image-clear"></div>
-                        <div class="amazingaudioplayer-text">
-                            <div class="amazingaudioplayer-title"></div>
-                            <div class="amazingaudioplayer-info"><br></div>
-                        </div>
-                        <div class="amazingaudioplayer-text-clear"></div>
-                        <div class="amazingaudioplayer-bar">
-                            <div class="amazingaudioplayer-controls">
+                    div#amazingaudioplayer
+                        div.amazingaudioplayer-image
+                            img#cover(src="", style="width:100%;max-width:100%;vertical-align:middle;")
+                        div.amazingaudioplayer-image-clear
+                        div.amazingaudioplayer-text
+                            div.amazingaudioplayer-title
+                            div.amazingaudioplayer-info
+                        div.amazingaudioplayer-text-clear
+                        div.amazingaudioplayer-bar
+                            div.amazingaudioplayer-controls
                                 audio#listenTopMusic.hide(controls)
-                            </div>
-                            <div class="amazingaudioplayer-bar-buttons-clear"></div>
-                        </div>
-                        <div class="amazingaudioplayer-bar-clear"></div>
-                        <hr>
+                            div.amazingaudioplayer-bar-buttons-clear
+                        div.amazingaudioplayer-bar-clear
+                        hr
                         ul#listMusic.with-overflow                        
-                            for track in musics
-                                li 
-                                    a(href="javascript:;" data-cover=track.cover data-title=track.title data-artist=track.artist_name data-music=track.preview) #{track.title}
-                    </div>
+                            each track in musics
+                                li.row.mt-1
+                                    .col.col-10
+                                        a(href="javascript:;", data-cover=track.cover, data-title=track.title, data-artist=track.artist_name, data-music=track.preview) #{track.title}
+                                    .col.col-2
+                                        if track.exists == false
+                                            form(method="post")                                            
+                                                input(type="hidden" name="id_rapid_api_deezer" value=track.id_rapid_api_deezer)
+                                                input(type="hidden" name="title" value=track.title)
+                                                input(type="hidden" name="artist_name" value=track.artist_name)
+                                                input(type="hidden" name="cover" value=track.cover)
+                                                input(type="hidden" name="preview" value=track.preview)
+                                                button.btn.btn-sm.btn-danger 
+                                                    i.fa.fa-save
+                                        else 
+                                            button.btn.btn-sm.btn-secondary 
+                                                i.fa.fa-save
     
     script(src="/js/blindTest.js")
     script(src="/js/voice.js")

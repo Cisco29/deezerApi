@@ -48,6 +48,7 @@ const adminControllers = require('../src/controllers/AdminControllers.js')
     module.exports = (app) => {
         app.get('/', home.get)
         app.get('/search',  search.get)
+        app.post('/search', search.post)
 
         app.get('/inscription', register.get)
         app.post('/inscription', register.post)
@@ -58,6 +59,7 @@ const adminControllers = require('../src/controllers/AdminControllers.js')
         app.get('/deconnexion', auth.getDeconnect)
 
         app.get('/admin', adminControllers.get)
+        
 
 
     }
