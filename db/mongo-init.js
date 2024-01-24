@@ -3,3 +3,4 @@ db.createUser({
     pwd: "123456",
     roles: [{role: "readWrite", db: "top_music" }]
 });
+

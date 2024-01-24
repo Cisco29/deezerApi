@@ -19,12 +19,19 @@ html(lang="fr")
                         a.nav-link(aria-current="page" href="/" class=(app.route=="/"?"active":"")) Accueil
                     if app.user && app.user.connected == true
                         li.nav-item
+                            a.nav-link(href="/search" class=(app.route=="/search"?"active":"")) Chercher une musique
+                        li.nav-item
+                             a.nav-link(href="/admin" class=(app.route=="/admin"?"active":"")) Admin
+                        li.nav-item
                             a.nav-link(href="/deconnexion" class=(app.route=="/deconnexion"?"active":"")) Déconnexion
+                        if app.user.roles && app.user.roles.includes("admin")
+                            li.nav-item
+                                a.nav-link(href="/admin" class=(app.route=="/admin"?"active":"")) Admin
                     else
                         li.nav-item
-                            a.nav-link(href="/connexion" class=(app.route=="/connexion"?"active":"")) connexion
+                            a.nav-link(href="/connexion" class=(app.route=="/connexion"?"active":"")) Connexion
                         li.nav-item
-                            a.nav-link(href="/inscription" class=(app.route=="/inscription"?"active":"")) inscription
+                            a.nav-link(href="/inscription" class=(app.route=="/inscription"?"active":"")) Inscription
 
         - var messages = getMessages()
 
@@ -37,6 +44,5 @@ html(lang="fr")
                     each msg in messages.error
                         .alert.alert-danger= msg         
         block content
-
 
         script(src=process.env.BROWSER_REFRESH_URL)

@@ -3,15 +3,9 @@
   "version": "1.0.0",
   "description": "Api de music Deezer",
   "main": "index.js",
-  "pre-commit": {
-    "run": [
-      "test"
-    ]
-  },
   "scripts": {
     "dev": "browser-refresh server.js",
-    "start": "node server.js",
-    "test": "mocha --recursive --exit"
+    "start": "node server.js"
   },
   "author": "Cisco29",
   "license": "ISC",
@@ -28,9 +22,5 @@
     "otplib": "^12.0.1",
     "pug": "^3.0.2",
     "session": "^0.1.0"
-  },
-  "devDependencies": {
-    "mocha": "^10.2.0",
-    "pre-commit": "^1.2.2"
   }
 }

@@ -44,6 +44,7 @@ const home = require('../src/controllers/Home.js');
 const search = require('../src/controllers/Search.js');
 const register = require('../src/controllers/Register.js');
 const auth = require('../src/controllers/Authenticate.js');
+const adminControllers = require('../src/controllers/AdminControllers.js')
     module.exports = (app) => {
         app.get('/', home.get)
         app.get('/search',  search.get)
@@ -55,6 +56,8 @@ const auth = require('../src/controllers/Authenticate.js');
         app.post('/connexion', auth.post)
 
         app.get('/deconnexion', auth.getDeconnect)
+
+        app.get('/admin', adminControllers.get)
 
 
     }
