@@ -1,57 +1,78 @@
 extends ../layout.pug
 
 block stylesheet 
-    link(href="/css/audio.css" rel="stylesheet")
+    link(href="/assets/css/audio.css" rel="stylesheet")
 
 block content 
     .container
+        #message.row
         .row
             .col.col-12.col-lg-6.mt-4
-                form(action="/search" method="get")
+                form(action="/admin/search" method="get")
                     .input-group
                         span.input-group-text 
                             i.fa.fa-search
                         input(type="search" id="keyword" name="keyword" value=keyword) 
-                        button.btn.btn-primary(type="submit") Chercher 
+                        button(type="submit") Chercher 
 
             .col.col-12.col-lg-6.mt-4
-                input(type="hidden" id="artist_song" value="")
-                input(type="hidden" id="title_song" value="")
+                if musics           
+                    #amazingaudioplayer
+                        #waitSong.hide
+                            section 
+                                input(type="hidden" id="id_rapid_api_deezer")
+                                input(type="hidden" id="title")
+                                input(type="hidden" id="artist_name")
+                                input(type="hidden" id="cover")
+                                input(type="hidden" id="preview")
+                            .amazingaudioplayer-image
+                                img.amazingaudioplayer-cover(src="" style="width:100%;max-width:100%;vertical-align:middle;")
+                            
+                            .amazingaudioplayer-image-clear
+                            .amazingaudioplayer-text
+                                .amazingaudioplayer-title
+                                .amazingaudioplayer-info
+                                    br
+                            
+                            .btn-action-save
+                                button#not-exists.btn.btn-sm.btn-danger.hide 
+                                    i.fa.fa-save
+                                button#exists.btn.btn-sm.btn-secondary.hide 
+                                    i.fa.fa-save
 
-                if musics
-                    div#amazingaudioplayer
-                        div.amazingaudioplayer-image
-                            img#cover(src="", style="width:100%;max-width:100%;vertical-align:middle;")
-                        div.amazingaudioplayer-image-clear
-                        div.amazingaudioplayer-text
-                            div.amazingaudioplayer-title
-                            div.amazingaudioplayer-info
-                        div.amazingaudioplayer-text-clear
-                        div.amazingaudioplayer-bar
-                            div.amazingaudioplayer-controls
-                                audio#listenTopMusic.hide(controls)
-                            div.amazingaudioplayer-bar-buttons-clear
-                        div.amazingaudioplayer-bar-clear
+                            .btn-action-favorite.hide 
+                                button.btn.btn-sm.btn-warning(data-bs-toggle="modal" data-bs-target="#addFavorite")
+                                    i.fa-regular.fa-star
+
+                            .amazingaudioplayer-text-clear
+                            .amazingaudioplayer-bar
+                                .amazingaudioplayer-controls
+                                    audio#listenTopMusic(controls)
+                                
+                                .amazingaudioplayer-bar-buttons-clear
+                            .amazingaudioplayer-bar-clear
+
                         hr
                         ul#listMusic.with-overflow                        
-                            each track in musics
-                                li.row.mt-1
-                                    .col.col-10
-                                        a(href="javascript:;", data-cover=track.cover, data-title=track.title, data-artist=track.artist_name, data-music=track.preview) #{track.title}
-                                    .col.col-2
-                                        if track.exists == false
-                                            form(method="post")                                            
-                                                input(type="hidden" name="id_rapid_api_deezer" value=track.id_rapid_api_deezer)
-                                                input(type="hidden" name="title" value=track.title)
-                                                input(type="hidden" name="artist_name" value=track.artist_name)
-                                                input(type="hidden" name="cover" value=track.cover)
-                                                input(type="hidden" name="preview" value=track.preview)
-                                                button.btn.btn-sm.btn-danger 
-                                                    i.fa.fa-save
-                                        else 
-                                            button.btn.btn-sm.btn-secondary 
-                                                i.fa.fa-save
-    
-    script(src="/js/blindTest.js")
-    script(src="/js/voice.js")
+                            for track in musics
+                                li
+                                    a(href="javascript:;" data-id=track.id_rapid_api_deezer data-cover=track.cover data-title=track.title data-artist=track.artist_name data-music=track.preview data-exists=track.exists) #{track.title}
+
+                    //-- Ma modal pour les playlist
+                    #addFavorite.modal.fade(tabindex="-1" aria-labelledby="addFavoriteLabel" aria-hidden="true")
+                        .modal-dialog
+                            .modal-content
+                                .modal-header
+                                    h1#addFavoriteLabel.modal-title.fs-5 Ajout à une playlist
+                                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                                .modal-body                                    
+                                    h5 Créer une nouvelle playlist
+                                    .mb-3
+                                         input#newPlaylist.form-control(type="text" placeholder="Nom de la playlist")
+                                    #playlists
+                                .modal-footer
+                                    button#closeAddFavorite.btn.btn-secondaryn(type="button" data-bs-dismiss="modal") Close
+                                    button#savingPlaylist.btn.btn-primary(type="button") Sauvegarder
+       
+
     script(src="/js/main.js")

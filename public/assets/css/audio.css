@@ -1,6 +1,7 @@
 .hide { display:none; }
 ul { list-style: none; }
 .with-overflow { overflow:auto; }
+
 /* Barre de défilement */
 .with-overflow::-webkit-scrollbar { width: 8px; }
 .with-overflow::-webkit-scrollbar-thumb {
@@ -8,10 +9,13 @@ ul { list-style: none; }
     border-radius: 4px;
 }
 .with-overflow::-webkit-scrollbar-track { background-color: #333; }
+
 #listMusic { 
     max-height: 200px;
 }
+
 .amazingaudioplayer-bar-clear { margin-top: 30px; }
+
 #listMusic a { 
     color: #ddd;
     font-family: Arial,sans-serif;
@@ -23,6 +27,7 @@ ul { list-style: none; }
     text-align: left;
     text-decoration: none;
 }
+
 #amazingaudioplayer {
     box-sizing: border-box;
     max-width:460px;
@@ -43,6 +48,7 @@ ul { list-style: none; }
     background-image: -webkit-linear-gradient(top,#444 0%,#111 100%);
     background-image: linear-gradient(to bottom,#444 0%,#111 100%);
 }
+
 #amazingaudioplayer .amazingaudioplayer-image {
     position: relative;
     float: left;
@@ -68,6 +74,7 @@ ul { list-style: none; }
     font-size: 12px;
     font-weight: 700;
 }
+
 #amazingaudioplayer .amazingaudioplayer-info {
     display: block;
     color: #ddd;
@@ -87,4 +94,20 @@ ul { list-style: none; }
 #listMusic a {
     color: #ddd; /* ou la couleur que vous préférez */
     text-decoration: none; /* supprime le soulignement des liens */
+}
+
+/* Ajout de la règle pour le bouton save */
+.btn-action-save {
+    float: right;
+    margin-right: 10px;
+}
+
+/* Ajout des styles pour le bouton save */
+.btn-action-save.clicked {
+    background-color: grey;
+    cursor: not-allowed;
+}
+.btn-action-favorite {
+    float: right;
+    margin-right: 10px;
 }
