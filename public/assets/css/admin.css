@@ -1,0 +1,23 @@
+body {
+    background-image: url('../../images/admin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ; /* Ajustez la position pour centrer verticalement et aligner en haut */
+    height: 150vh; /* Utilisez 100vh pour prendre 100% de la hauteur de la fenêtre */
+    margin: 0; /* Assurez-vous qu'il n'y a pas de marges autour du body */
+  }
+
+  h3 {
+    color: white;
+  }
+.nav-underline .nav-link.active, .nav-underline .show>.nav-link {
+    font-weight: 600;
+    color: #D35088;
+    border-bottom-color: currentcolor;
+}
+.nav-underline .nav-link, .nav-underline .show>.nav-link {
+    color: #000;
+}
+.nav-underline .nav-link:hover, .nav-underline .show>.nav-link:hover {
+    border-bottom-color: currentcolor;
+}

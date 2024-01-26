@@ -35,9 +35,14 @@ exports.post = (req, res) => {
 
 };
 
-exports.getDeconnect = (request, response) => {
-    request.session.user = null;
-    request.flash('notify', 'Vous êtes maintenant déconnecté !')
-    response.redirect('/')
+// exports.getDeconnect = (request, response) => {
+//     request.session.user = null;
+//     request.flash('notify', 'Vous êtes maintenant déconnecté !')
+//     response.redirect('/')
+// }
+exports.deconnect = (req, res) => {
+    req.session.user = null;
+    req.flash('notify', `Vous êtes maintenant déconnecté`);
+    res.redirect('/')
 }
 

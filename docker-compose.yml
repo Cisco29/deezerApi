@@ -3,8 +3,7 @@ services:
   mongo:
     image: mongo
     restart: always 
-    environment:
-      
+    environment:      
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: top_music
@@ -12,4 +11,4 @@ services:
       - 27017:27017
     volumes:
       - ./docker/data:/data/db
-      - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro

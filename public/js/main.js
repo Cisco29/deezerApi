@@ -73,6 +73,8 @@ function savingPlaylist() {
     } else if (document.querySelector('#choicePlaylist') && document.querySelector('#choicePlaylist').value != "") {
         formData.append('playlist', document.querySelector('#choicePlaylist').value.trim());
     }
+
+    formData.append('is_ajax', "1");
     // On ferme la popup
     document.querySelector('#closeAddFavorite').click();
 
@@ -128,6 +130,8 @@ function choicePlaylist(e) {
     } 
     // sinon on est sur le champ newPlaylist
     else  {
+        document.querySelector('#newPlaylist').disabled = false;
+        document.querySelector('#choicePlaylist').value="";
         if(e.type == 'dblclick') { 
             document.querySelector('#newPlaylist').disabled = false;
             document.querySelector('#newPlaylist').focus();
